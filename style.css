@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #88c1d0;
+}
+
+header {
+    background-color: white;
+    height: 5vh;
+}
+
+ul {
+    list-style: none;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+.mp0 {
+    margin: 0;
+    padding: 0;
+}
+
+.flexr {
+    display: flex;
+    flex-direction: row;
+}
+
+.rowstart {
+    justify-content: flex-end;
+}
+
+#index_left {
+    width: 50vw;
+    height: 95vh;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#index_right {
+    background-color: #275fa0;
+    width: 50vw;
+    height: 95vh;
+}
+
+#index_button {
+    width: fit-content;
+    background-color: #ffca4b;
+    border-radius: 20px;
+    border-style: none;
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 12pt;
+    font-weight: 600;
+}
+
+.center {
+    margin: auto;
+}
+
+.flexc {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_input {
+    width: 200px;
+    margin-bottom: 5vh;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.navfont {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(85, 85, 85);
+}
+
+.citation {
+    font-size: 40pt;
+    font-family: 'Caveat', cursive;
+    color: white;
+    text-align: center;
+}
+
+#index_logo {
+    width: 400px;
+    height: 400px;
+    background-image: url(ressources/logo.png);
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#index_intro {
+    margin-top: -20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25pt;
+    text-align: center;
+    color: #275fa0;
+    font-weight: 600;
+    line-height: 200%;
+}
+
+#loginbox {
+    justify-content: center;
+    background-color: white;
+    width: 25vw;
+    height: 50vh;
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px 10px 0px 0px;
+}
+
+#alignlogin {
+    margin-top: 20vh;
+}
+
+#userimage {
+    background-image: url(ressources/userpic.png);
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 5vh;
+}
+
+#regtxt {
+    text-align: center;
+    text-justify: distribute;
+    font-family: 'Roboto', sans-serif;
+    color: #275fa0;
+    font-size: large;
+}
+
+.com {
+    width: 75vw;
+    height: fit-content;
+    background-color: aliceblue;
+    border-radius: 20px 20px 0px 0px;
+    margin-bottom: 10vh;
+    box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.2);
+}
+
+.comunpair {
+    width: 75vw;
+    height: 20vh;
+    background-color: aliceblue;
+    border-radius: 20px 20px 20px 0px;
+    margin-bottom: 10vh;
+    box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.2);
+}
+
+.compair {
+    width: 75vw;
+    height: 20vh;
+    background-color: aliceblue;
+    border-radius: 20px 20px 0px 20px;
+    margin-bottom: 10vh;
+    box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.2);
+}
+
+#txtareacom {
+    resize: none;
+    width: 95%;
+    height: 30vh;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30pt;
+}
+
+.justifycenter {
+    justify-content: center;
+}

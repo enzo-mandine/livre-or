@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans|Roboto&display=swap" rel="stylesheet">
+    <title>Accueil</title>
+</head>
+
+<body>
+    <header class="mp0 flexr rowstart">
+        <nav class="mt15">
+            <ul class="mp0 flexr">
+                <li class="mr10 navfont"> <a href="index.php"> Accueil</a></li>
+                <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
+            </ul>
+        </nav>
+        <section class="mt15">
+            <ul class="mp0 flexr">
+                <li class="mr10 navfont">
+                    <php if(isset($_SESSION["isconnected"])) { echo <a href="profil.php">Mon compte</a>; } else { echo
+                        <a href="connexion.php">Connexion</a>} ?>
+                        <!-- php -->
+                </li>
+                <li class="mr10 navfont">Deconnexion</li> <!-- session_destroy(); -->
+            </ul>
+        </section>
+    </header>
+    <main class="flexr">
+        <section id="index_left">
+            <article id="index_logo"></article>
+            <p id="index_intro">La Plateforme Marseille, une école et un lieu unique pour des formations d’excellence
+                aux
+                métiers du numérique, mais aussi une source intarissable de phrases cultes !</p>
+        </section>
+        <section id="index_right" class="flexc">
+            <div class="center">
+                <!-- Insert random number to print citation -->
+                <p class="citation">“ Citation random 1 ”</p>
+                <p class="citation">“ Citation random 2 ”</p>
+                <p class="citation">“ Citation random 3 ”</p>
+            </div>
+            <input class="center" id="index_button" type="button" value="Acceder au livre d'or">
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
