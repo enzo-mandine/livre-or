@@ -94,6 +94,13 @@ nav {
     text-align: center;
 }
 
+.citation_livreor {
+    font-size: 40pt;
+    font-family: 'Caveat', cursive;
+    color: black;
+    text-align: center;
+}
+
 #index_logo {
     width: 400px;
     height: 400px;
@@ -156,7 +163,7 @@ nav {
 
 .comunpair {
     width: 75vw;
-    height: 20vh;
+    height: fit-content;
     background-color: aliceblue;
     border-radius: 20px 20px 20px 0px;
     margin-bottom: 10vh;
@@ -165,7 +172,7 @@ nav {
 
 .compair {
     width: 75vw;
-    height: 20vh;
+    height: fit-content;
     background-color: aliceblue;
     border-radius: 20px 20px 0px 20px;
     margin-bottom: 10vh;
@@ -185,4 +192,21 @@ nav {
 
 .justifycenter {
     justify-content: center;
+}
+
+.postinfo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15pt;
+}
+
+.txtalighl {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.txtalighr {
+    text-align: right;    
+    margin-right: 20px;
+    margin-bottom: 20px;
 }

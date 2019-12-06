@@ -1,3 +1,29 @@
+<?php
+session_start();
+if (!isset($_SESSION["isconnected"])) {
+    header("location:index.php");
+    die;
+}
+if (isset($_GET["logout"])) {
+    session_destroy();
+    header("location:index.php");
+}
+$login = mysqli_connect("localhost", "root", "", "livreor");
+$request = "SELECT * FROM `utilisateurs`WHERE login = '" . $_SESSION["isconnected"] . "'";
+$query = mysqli_query($login, $request);
+$result = mysqli_fetch_all($query);
+foreach ($result as $row)
+
+    if (isset($_POST["submit"])) {
+        if ($_POST["password"] == $_POST["passwordconfirm"]) {
+            $editrequest = "UPDATE utilisateurs SET login = '" . $_POST["login"] . "', password = '" . password_hash($_POST["password"], PASSWORD_DEFAULT) . "' WHERE login = '" . $row[1] . "'";
+            mysqli_query($login, $editrequest);
+            mysqli_close($login);
+            header("location:profil.php");
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,7 +33,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans|Roboto&display=swap" rel="stylesheet">
-    <title>Inscription</title>
+    <title>Profil</title>
 </head>
 
 <body>
@@ -21,22 +47,23 @@
         <section class="mt15">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont">
-                    <php if(isset($_SESSION["isconnected"])) { echo <a href="profil.php">Mon compte</a>; } else { echo
-                        <a href="connexion.php">Connexion</a>} ?>
-                        <!-- php -->
+                    <?php if (isset($_SESSION["isconnected"])) {
+                        echo "<a href='profil.php'>Mon compte</a>";
+                    } else {
+                        echo "<a href='connexion.php'>Connexion</a>";
+                    } ?>
                 </li>
-                <li class="mr10 navfont">Deconnexion</li> <!-- session_destroy(); -->
+                <a class="navfont mr10" href="profil.php?logout=true">Deconnexion</a>
             </ul>
         </section>
     </header>
     <main>
         <div id="alignlogin" class="flexc">
             <section id="loginbox" class="flexc center">
-                <p id="regtxt" class="center">Veuillez vous enregistrer pour consulter et/ou rédigez sur le live d'or
-                </p>
+                <p id="regtxt" class="center">Veuillez renseignez les champ pour modifier votre profil</p>
                 <form class="flexc center" action="" method="POST">
                     <label for="login">Login</label>
-                    <input class="login_input" type="text" name="login" placeholder="Login">
+                    <input class="login_input" type="text" name="login" placeholder=<?php echo $row[1] ?> required>
                     <label for="password">Password</label>
                     <input class="login_input" type="password" name="password" placeholder="******">
                     <label for="password_confirm">Confirmez le password</label>
