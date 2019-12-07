@@ -249,3 +249,8 @@ footer {
     overflow: hidden;
     position:fixed;
 }
+
+#livreorbutton {
+    display: flex;
+    justify-content: center;
+}

@@ -8,20 +8,27 @@ if (isset($_GET["logout"])) {
     session_destroy();
     header("location:index.php");
 }
+$userconnected = $_SESSION["isconnected"];
 $login = mysqli_connect("localhost", "root", "", "livreor");
-$request = "SELECT * FROM `utilisateurs`WHERE login = '" . $_SESSION["isconnected"] . "'";
+$request = "SELECT * FROM utilisateurs WHERE login = '" . $userconnected . "'";
 $query = mysqli_query($login, $request);
 $result = mysqli_fetch_all($query);
-foreach ($result as $row)
-
-    if (isset($_POST["submit"])) {
-        if ($_POST["password"] == $_POST["passwordconfirm"]) {
-            $editrequest = "UPDATE utilisateurs SET login = '" . $_POST["login"] . "', password = '" . password_hash($_POST["password"], PASSWORD_DEFAULT) . "' WHERE login = '" . $row[1] . "'";
+$pass = $result[0][2];
+if (isset($_POST["submit"])) {
+    if ($_POST["password"] == $_POST["passwordconfirm"]) {
+        if (password_verify($_POST["password"], $pass)) {
+            $editrequest = "UPDATE utilisateurs SET login = '" . $_POST["login"] . "' WHERE login = '" . $userconnected . "'";
             mysqli_query($login, $editrequest);
             mysqli_close($login);
-            header("location:profil.php");
+            header("location:index.php");
+            $_SESSION["isconnected"] = $_POST["login"];
+        } else {
+            echo "ERROR hash";
         }
+    } else {
+        echo "ERROR";
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,14 +45,12 @@ foreach ($result as $row)
 
 <body>
     <header class="mp0 flexr rowstart">
-        <nav class="mt15 mr80">
+        <nav class="mt15">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont"> <a href="index.php">Accueil</a></li>
                 <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
                 <li class="mr10 navfont">
-                    <?php if (isset($_SESSION["isconnected"])) {
-                        echo "<a href='profil.php'>Mon compte</a>";
-                    } else {
+                    <?php if (!isset($_SESSION["isconnected"])) {
                         echo "<a class='loginfont' href='connexion.php'>Connexion</a>";
                     }
                     ?>
@@ -65,13 +70,16 @@ foreach ($result as $row)
         <div id="alignlogin" class="flexc">
             <section id="loginbox" class="flexc center">
                 <p id="regtxt" class="center">Veuillez renseignez les champ pour modifier votre profil</p>
-                <form class="flexc center" action="" method="POST">
+                <form class="flexc center" action="profil.php" method="POST">
                     <label for="login">Login</label>
-                    <input class="login_input" type="text" name="login" placeholder=<?php echo $row[1] ?> required>
+                    <input class="login_input" type="text" name="login" placeholder=<?php foreach ($result as $row) {
+                                                                                        echo $row[1];
+                                                                                    } ?> required>
                     <label for="password">Password</label>
                     <input class="login_input" type="password" name="password" placeholder="******">
-                    <label for="password_confirm">Confirmez le password</label>
-                    <input class="login_input" type="password" name="password_confirm" placeholder="******">
+                    <label for="passwordconfirm">Confirmez le password</label>
+                    <input class="login_input" type="password" name="passwordconfirm" placeholder="******">
+                    <input id="index_button" class="center" name="submit" type="submit" value="Valider">
                 </form>
             </section>
         </div>

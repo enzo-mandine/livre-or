@@ -34,15 +34,13 @@ if (isset($_POST["submit"])) {
 
 <body>
     <header class="mp0 flexr rowstart">
-        <nav class="mt15 mr80">
+        <nav class="mt15">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont"> <a href="index.php">Accueil</a></li>
                 <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
                 <li class="mr10 navfont">
                     <?php if (isset($_SESSION["isconnected"])) {
                         echo "<a href='profil.php'>Mon compte</a>";
-                    } else {
-                        echo "<a class='loginfont' href='connexion.php'>Connexion</a>";
                     }
                     ?>
                 </li>
@@ -60,22 +58,33 @@ if (isset($_POST["submit"])) {
     <main>
         <div id="alignlogin" class="flexc">
             <section id="loginbox" class="flexr">
-                <form class="flexc center" action="connexion.php" method="POST">
-                    <div id="userimage"></div>
-                    <label for="login">Login</label>
-                    <input class="login_input" type="text" name="login" placeholder="Login" required>
-                    <label for="password">Password</label>
-                    <input class="login_input" type="password" name="password" placeholder="******" required>
-                    <input id="index_button" class="center" name="submit" type="submit" value="connexion">
-                </form>
+                <div class="flexc">
+                    <form class="flexc center" action="connexion.php" method="POST">
+                        <div id="userimage"></div>
+                        <label for="login">Login</label>
+                        <input class="login_input" type="text" name="login" placeholder="Login" required>
+                        <label for="password">Password</label>
+                        <input class="login_input" type="password" name="password" placeholder="******" required>
+                        <input id="index_button" class="center" name="submit" type="submit" value="connexion">
+                    </form>
+                    <div>
+                        <?php if (isset($_POST["submit"])) {
+                            if (!isset($result[0]) || ($_POST["login"] != $result[0][0]) && !password_verify($_POST["password"], $result[0][1])) {
+                                echo "<p class='aligncenter navfont'>Erreur de login / password</p>";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
+    <footer>
+        <div class="center">
+            <p class="footertxt">Livre d'or - Laplateforme</p>
+        </div>
+    </footer>
 </body>
-<footer>
-    <div class="center">
-        <p class="footertxt">Livre d'or - Laplateforme</p>
-    </div>
-</footer>
+
 
 </html>

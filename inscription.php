@@ -3,7 +3,7 @@ if (isset($_GET["logout"])) {
     session_destroy();
     header("location:index.php");
 }
-if (isset($_POST["regsubmit"])) {
+if (isset($_POST["submit"])) {
     if ($_POST["password"] == $_POST["passwordconfirm"]) {
         $login = mysqli_connect("localhost", "root", "", "livreor");
         $request = "SELECT * FROM `utilisateurs`";
@@ -71,16 +71,14 @@ if (isset($_POST["regsubmit"])) {
             <section id="loginbox" class="flexc center">
                 <p id="regtxt" class="center">Veuillez vous enregistrer pour consulter et/ou rédigez sur le live d'or
                 </p>
-                <form class="flexc center" action="" method="POST">
+                <form class="flexc center" action="inscription.php" method="POST">
                     <label for="login">Login</label>
                     <input class="login_input" type="text" name="login" placeholder="Login" required>
                     <label for="password">Password</label>
                     <input class="login_input" type="password" name="password" placeholder="******" required>
                     <label for="passwordconfirm">Confirmez le password</label>
                     <input class="login_input" type="password" name="passwordconfirm" placeholder="******" required>
-                    <div class="alignh flexr justifycenter">
-                        <input name="regsubmit" id="" class="alignh" type="submit" value="Inscription">
-                    </div>
+                    <input id="index_button" class="center" name="submit" type="submit" value="connexion">
                 </form>
             </section>
         </div>

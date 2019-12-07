@@ -5,7 +5,7 @@ if (isset($_GET["logout"])) {
     header("location:index.php");
 }
 $login = mysqli_connect("localhost", "root", "", "livreor");
-$request = "SELECT * FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur";
+$request = "SELECT * FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur ORDER BY date DESC";
 $query = mysqli_query($login, $request);
 $result = mysqli_fetch_all($query);
 ?>
@@ -24,7 +24,7 @@ $result = mysqli_fetch_all($query);
 
 <body>
     <header class="mp0 flexr rowstart">
-        <nav class="mt15 mr80">
+        <nav class="mt15">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont"> <a href="index.php">Accueil</a></li>
                 <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
@@ -49,14 +49,20 @@ $result = mysqli_fetch_all($query);
     </header>
     <main>
         <p class="aligncenter citation">Livre d'or</p>
+        <div id="livreorbutton" class="center">
+            <a class="center" href="commentaire.php">
+                <input id="index_button" type="button" value="Ecrire sur le livre d'or">
+            </a>
+        </div>
         <section>
             <?php
             $i = 0;
             while ($i < count($result)) {
+                $date = date('d-m-Y', strtotime($result[$i][6]));
                 if ($i % 2 != 0) {
-                    echo "<article class='comunpair center'><p class='citation_livreor'>" . $result[$i][4] . "</p><p class='postinfo txtalighl'>Fait le " . $result[$i][6] . " par " . $result[$i][1] . "</article></p>";
+                    echo "<article class='comunpair center'><p class='citation_livreor'>" . $result[$i][4] . "</p><p class='postinfo txtalighl'>Fait le " . $date . " par " . $result[$i][1] . "</article></p>";
                 } else {
-                    echo "<article class='compair center'><p class='citation_livreor'>" . $result[$i][4] . "</p><p class='postinfo txtalighr'>Fait le " . $result[$i][6] . " par " . $result[$i][1] . "</article></p>";
+                    echo "<article class='compair center'><p class='citation_livreor'>" . $result[$i][4] . "</p><p class='postinfo txtalighr'>Fait le " . $date . " par " . $result[$i][1] . "</article></p>";
                 }
                 $i++;
             }

@@ -51,6 +51,8 @@ $result[$idx3] = $result[$max];
                 <li>
                     <?php if (isset($_SESSION["isconnected"])) {
                         echo "<a class='logoutfont mr10' href='index.php?logout=true'>Deconnexion</a>";
+                    } else {
+                        echo "<a class='loginfont mr10' href='inscription.php'>Inscription</a>"; 
                     }
                     ?>
 
