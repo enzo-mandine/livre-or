@@ -254,3 +254,8 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12pt;
+}
