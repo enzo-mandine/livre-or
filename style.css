@@ -74,6 +74,10 @@ nav {
     margin-right: 10px;
 }
 
+.mr80 {
+    margin-right: 80px;
+}
+
 .mt15 {
     margin-top: 15px;
 }
@@ -82,13 +86,25 @@ nav {
     margin-bottom: 15px;
 }
 
-.navfont {
+.mr30 {
+    margin-right: 30px;
+}
+.navfont{
     font-family: 'Roboto', sans-serif;
-    color: rgb(85, 85, 85);
+}
+
+.logoutfont {
+    font-family: 'Roboto', sans-serif;
+    color: red;
+}
+
+.loginfont {
+    font-family: 'Roboto', sans-serif;
+    color: green;  
 }
 
 .citation {
-    font-size: 40pt;
+    font-size: 35pt;
     font-family: 'Caveat', cursive;
     color: white;
     text-align: center;
@@ -209,4 +225,27 @@ nav {
     text-align: right;    
     margin-right: 20px;
     margin-bottom: 20px;
+}
+
+.footertxt {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    bottom: 0;
+}
+
+.noscroll {
+    overflow: hidden;
+    position:fixed;
 }

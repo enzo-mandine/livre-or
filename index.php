@@ -34,26 +34,30 @@ $result[$idx3] = $result[$max];
     <title>Accueil</title>
 </head>
 
-<body>
+<body class="noscroll">
     <header class="mp0 flexr rowstart">
-        <nav class="mt15">
+        <nav class="mt15 mr80">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont"> <a href="index.php">Accueil</a></li>
                 <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
-            </ul>
-        </nav>
-        <section class="mt15">
-            <ul class="mp0 flexr">
                 <li class="mr10 navfont">
                     <?php if (isset($_SESSION["isconnected"])) {
                         echo "<a href='profil.php'>Mon compte</a>";
                     } else {
-                        echo "<a href='connexion.php'>Connexion</a>";
-                    } ?>
+                        echo "<a class='loginfont' href='connexion.php'>Connexion</a>";
+                    }
+                    ?>
                 </li>
-                <a class="navfont mr10" href="index.php?logout=true">Deconnexion</a>
+                <li>
+                    <?php if (isset($_SESSION["isconnected"])) {
+                        echo "<a class='logoutfont mr10' href='index.php?logout=true'>Deconnexion</a>";
+                    }
+                    ?>
+
+                </li>
             </ul>
-        </section>
+        </nav>
+        <div></div>
     </header>
     <main class="flexr">
         <section id="index_left">
@@ -69,12 +73,20 @@ $result[$idx3] = $result[$max];
                 <p class="citation"><?php echo "$com2[1]" ?></p>
                 <p class="citation"><?php echo "$com3[1]" ?></p>
             </div>
-            <a class="center" href="livre-or.php">
-                <input id="index_button" type="button" value="Acceder au livre d'or">
-            </a>
+            <div class="center">
+                <a class="center mr30" href="livre-or.php">
+                    <input id="index_button" type="button" value="Acceder au livre d'or">
+                </a>
+                <a class="center" href="commentaire.php">
+                    <input id="index_button" type="button" value="Ecrire sur le livre d'or">
+                </a>
+            </div>
         </section>
     </main>
     <footer>
+        <div class="center">
+            <p class="footertxt">Livre d'or - Laplateforme</p>
+        </div>
     </footer>
 </body>
 

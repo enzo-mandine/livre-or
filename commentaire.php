@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["isconnected"])) {
-    header("location:index.php");
+    header("location:connexion.php");
     die;
 }
 
@@ -36,24 +36,28 @@ if (isset($_POST["txtareacom"]) && (isset($_SESSION["isconnected"]))) {
 
 <body>
     <header class="mp0 flexr rowstart">
-        <nav class="mt15">
+        <nav class="mt15 mr80">
             <ul class="mp0 flexr">
                 <li class="mr10 navfont"> <a href="index.php">Accueil</a></li>
                 <li class="mr10 navfont"> <a href="livre-or.php">Livre d'or</a></li>
-            </ul>
-        </nav>
-        <section class="mt15">
-            <ul class="mp0 flexr">
                 <li class="mr10 navfont">
                     <?php if (isset($_SESSION["isconnected"])) {
                         echo "<a href='profil.php'>Mon compte</a>";
                     } else {
-                        echo "<a href='connexion.php'>Connexion</a>";
-                    } ?>
+                        echo "<a class='loginfont' href='connexion.php'>Connexion</a>";
+                    }
+                    ?>
                 </li>
-                <a class="navfont mr10" href="commentaire.php?logout=true">Deconnexion</a> <!-- session_destroy(); -->
+                <li>
+                    <?php if (isset($_SESSION["isconnected"])) {
+                        echo "<a class='logoutfont mr10' href='index.php?logout=true'>Deconnexion</a>";
+                    }
+                    ?>
+
+                </li>
             </ul>
-        </section>
+        </nav>
+        <div></div>
     </header>
     <main>
         <section>
@@ -72,5 +76,10 @@ if (isset($_POST["txtareacom"]) && (isset($_SESSION["isconnected"]))) {
         </section>
     </main>
 </body>
+<footer>
+    <div class="center">
+        <p class="footertxt">Livre d'or - Laplateforme</p>
+    </div>
+</footer>
 
 </html>

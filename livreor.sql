@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 07 déc. 2019 à 00:13
+-- Généré le :  sam. 07 déc. 2019 à 01:17
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -44,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 --
 
 INSERT INTO `commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUES
-(27, 'Je prie le dieu du php et si il vient pas m\'aider je l\'encule @Sarah', 2, '2019-12-03'),
+(27, 'Je prie le dieu du php et si il vient pas m\'aider je le bute @Sarah', 2, '2019-12-03'),
 (25, 'Continue de rien faire , c\'est parfait ! @Etienne', 2, '2019-12-04'),
 (26, 'Je sais pas ce qui vous arrive mais vous Ãªtes trop sÃ©rieux aujourd\'hui @Hugo', 2, '2019-12-05'),
-(24, 'En vrai si ton pokemon c\'est un type plante, mais qu\'il mange un champignon c\'est quoi ? @Amar\r\n\r\nC\'est du cannibalisme ! @Enzo', 2, '2019-12-06'),
+(24, 'En vrai si ton pokemon c\'est un type plante, mais qu\'il mange un champignon c\'est quoi ? @Amar\r\n<br/>\r\nC\'est du cannibalisme ! @Enzo', 2, '2019-12-06'),
 (23, 'Un slip pour homme ? Bah ca peut Ãªtre excitant. @Etienne', 2, '2019-12-07'),
 (28, 'Non mais Gwen il a un kiki je pense. @Sarah', 2, '2019-12-08'),
 (29, 'Son bras on dirait un manche de guitare @Devon', 2, '2019-12-09');
