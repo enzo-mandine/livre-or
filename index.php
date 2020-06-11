@@ -20,7 +20,6 @@ $max = $max - 1;
 $idx3 = random_int(0, $max);
 $com3 = $result[$idx3];
 $result[$idx3] = $result[$max];
-//var_dump($com1, $com2, $com3);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -52,7 +51,7 @@ $result[$idx3] = $result[$max];
                     <?php if (isset($_SESSION["isconnected"])) {
                         echo "<a class='logoutfont mr10' href='index.php?logout=true'>Deconnexion</a>";
                     } else {
-                        echo "<a class='loginfont mr10' href='inscription.php'>Inscription</a>"; 
+                        echo "<a class='loginfont mr10' href='inscription.php'>Inscription</a>";
                     }
                     ?>
 
@@ -69,7 +68,7 @@ $result[$idx3] = $result[$max];
                 métiers du numérique, mais aussi une source intarissable de phrases cultes !</p>
         </section>
         <section id="index_right" class="flexc">
-            <div class="center">
+            <div id="align_txt" class="center flexc">
                 <!-- Insert random number to print citation -->
                 <p class="citation"><?php echo "$com1[1]" ?></p>
                 <p class="citation"><?php echo "$com2[1]" ?></p>
